@@ -30,3 +30,32 @@ Functions that run before the controller. We use these for:
 #### 5. Config (`src/config/`)
 
 Centralized place for library setups, such as our Prisma Client instance or Cloudinary for image uploads.
+
+## Local Development
+
+### Prerequisites
+
+- Node.js (v18 or higher)
+- PostgreSQL
+
+### Setup Steps
+
+1. Clone the repo: `git clone <your-url>`
+2. Install dependencies: `npm install`
+3. Start the development server: `npm run dev`
+
+The server will be available at `http://localhost:3000`.
+
+### 1/27/2026: setting up our backend database
+
+We use Prisma as our ORM (Object-Relational Mapper). This allows us to define our database structure in a human-readable format and automatically sync it with PostgreSQL using migrations. This ensures our backend code always knows exactly what our data looks like.
+
+## Infrastructure: Local PostgreSQL Management
+
+I chose to manage a local PostgreSQL instance to gain a deeper understanding of database administration.
+
+### Key Learnings:
+
+- **Port Management:** Configured the database to run on the default port `5432`.
+- **User Roles:** Managed superuser permissions and created project-specific databases.
+- **Connection Strings:** Learned how to construct and secure connection strings using environment variables (`.env`) to prevent sensitive data from being committed to version control.
