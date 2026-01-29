@@ -159,3 +159,11 @@ To support the "Near Me" feature and ensure high performance:
     *Pagination: GET /barbers?page=1&limit=10 prevents large data transfers.
 
     *Search: GET /barbers?search=fade allows keyword searching through names and specialties.
+
+### Milestone: Schema-Driven Development
+
+- **The Issue:** Attempted to use `customerName` in code when the schema required a `userId`.
+- **The Fix:** Synchronized the Express `req.body` to match the `Appointment` model fields: `userId`, `barberId`, `serviceId`, `startTime`, and `endTime`.
+- **Database Logic:** - **Foreign Keys:** The appointment now correctly "points" to an existing User, Barber, and Service using their IDs.
+  - **Double-Booking Protection:** Leveraged the `@@unique([barberId, startTime])` constraint.
+- **Error Handling:** Added a check for Prisma error code `P2002` (Unique constraint failed) to tell the user the slot is taken.
