@@ -1,3 +1,4 @@
+import cors from "cors";
 import express, { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
@@ -28,6 +29,7 @@ const adapter = new PrismaPg(pool);
 const prisma = new PrismaClient({ adapter });
 
 // 4. Middleware
+app.use(cors());
 app.use(express.json());
 
 // --- ROUTES ---

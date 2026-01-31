@@ -162,3 +162,9 @@ I chose to manage a local PostgreSQL instance to gain a deeper understanding of 
 - **Data Integrity:** Utilized `.upsert()` loops for Barbers to ensure idempotent updates (updating existing data instead of failing on duplicates).
 - **Service Menu:** Populated the `Service` table with varied price points and durations to test frontend filtering and sorting later.
 - **Frontend Benefit:** Having multiple Barbers allows for testing dynamic routing (e.g., `/barbers/jermaine-1`) and horizontal card layouts.
+
+### Milestone: Production Synchronization (CI/CD)
+
+- **Action:** Executed `git push` to trigger an automated redeploy on Render.
+- **Process:** Leveraged Continuous Integration/Continuous Deployment (CI/CD) to update the production environment with the new `seed.ts` logic.
+- **Logic:** Confirmed that pushing to the `main` branch is the primary method for updating the live API without manual server restarts.
