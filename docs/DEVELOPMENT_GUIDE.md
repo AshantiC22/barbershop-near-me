@@ -141,3 +141,24 @@ I chose to manage a local PostgreSQL instance to gain a deeper understanding of 
 - **Service Reachability:** Confirmed that the Node.js runtime is active and responding to GET requests on the public internet.
 - **Endpoint Routing:** Verified that the Express router is correctly directing traffic to the production controllers.
 - **Database Status:** 'Database connection verified' confirmed in Render logs, indicating successful handshake between the Web Service and PostgreSQL.
+
+### Milestone: Expanding API Functionality
+
+- **Issue:** Encountered 404 on POST requests to `/api/barbers`.
+- **Discovery:** Realized that while GET routes existed for data retrieval, the corresponding POST controller for data creation was missing in `index.ts`.
+- **Logic:** Each HTTP method (GET, POST, etc.) requires its own explicit route handler in Express to avoid 404 'Not Found' errors.
+- **Action:** Implemented `app.post("/api/barbers")` using Prisma's `.create()` method to enable production data entry.
+
+### Milestone: Full CRUD Loop & Deployment Verification
+
+- **Success:** Successfully executed a POST request to the live production environment.
+- **Key Discovery:** Learned that the backend requires explicit route handlers for every HTTP method (GET vs POST). A URL existing for viewing (GET) does not mean it exists for creating (POST).
+- **Tooling:** Verified the end-to-end pipeline: VS Code -> GitHub -> Render Build -> Prisma -> PostgreSQL.
+- **Verification:** Refreshed the public URL in the browser and confirmed the empty brackets `[]` are now replaced with live JSON data.
+
+### Milestone: Advanced Data Seeding & Relational Readiness
+
+- **Strategy:** Transitioned from single-record seeding to a multi-entity "Full Shop" state.
+- **Data Integrity:** Utilized `.upsert()` loops for Barbers to ensure idempotent updates (updating existing data instead of failing on duplicates).
+- **Service Menu:** Populated the `Service` table with varied price points and durations to test frontend filtering and sorting later.
+- **Frontend Benefit:** Having multiple Barbers allows for testing dynamic routing (e.g., `/barbers/jermaine-1`) and horizontal card layouts.
