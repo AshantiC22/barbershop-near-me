@@ -5,7 +5,10 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false }, // This tells Node "I trust Render's certificate"
+});
 const adapter = new PrismaPg(pool);
 const prisma = new PrismaClient({ adapter });
 
