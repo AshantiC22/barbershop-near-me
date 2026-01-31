@@ -7,7 +7,6 @@ export default defineConfig({
     url: env("DATABASE_URL"),
   },
   migrations: {
-    // This replaces the old package.json seed configuration
     seed: "tsx prisma/seed.ts",
   },
 });
