@@ -37,7 +37,7 @@ app.get("/", (req: Request, res: Response) => {
   res.send("💈 Barbershop Near Me API is officially online!");
 });
 
-// GET: All Barbers (The Jermaine Harris route)
+// GET: All Barbers
 app.get("/api/barbers", async (req: Request, res: Response) => {
   try {
     const barbers = await prisma.barber.findMany();
@@ -45,6 +45,30 @@ app.get("/api/barbers", async (req: Request, res: Response) => {
   } catch (error) {
     console.error("Error fetching barbers:", error);
     res.status(500).json({ error: "Failed to load barbers" });
+  }
+});
+
+// POST: Create a new Barber
+app.post("/api/barbers", async (req: Request, res: Response) => {
+  try {
+    const { name, bio, imageUrl } = req.body;
+
+    if (!name || !bio) {
+      return res.status(400).json({ error: "Name and bio are required" });
+    }
+
+    const newBarber = await prisma.barber.create({
+      data: {
+        name,
+        bio,
+        imageUrl,
+      },
+    });
+
+    res.status(201).json(newBarber);
+  } catch (error) {
+    console.error("Barber Creation Error:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 

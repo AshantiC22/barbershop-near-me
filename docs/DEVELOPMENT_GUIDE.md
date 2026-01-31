@@ -116,3 +116,28 @@ I chose to manage a local PostgreSQL instance to gain a deeper understanding of 
 - **Database Logic:** Verified that Prisma and PostgreSQL correctly handle relational data and unique constraints.
 - **Error Handling:** Implemented custom error messages for 404 (Not Found) and 500 (Server Error) scenarios.
 - **Next Phase:** Frontend Integration — Connecting a user interface to these API endpoints.
+
+### Project Milestone: Backend System Completion
+
+- **Stack:** Node.js, Express, TypeScript, Prisma, PostgreSQL.
+- **Architecture:** Client-Server model with a RESTful API.
+- **Key Learnings:** - Transpilation: Understanding that TS must be compiled into JS for production.
+  - Infrastructure: Managing managed databases and web services on Render.
+  - DevOps: Automating builds via GitHub and npm lifecycle scripts.
+  - **Status:** Production-Ready & Live at `https://barbershop-near-me.onrender.com`.
+- **Infrastructure:** Synchronized Node.js Web Service and PostgreSQL database in the same cloud region.
+- **Validation:** Verified DB connection and JWT authentication logic in a live cloud environment.
+- **Documentation:** Full CRUD paths documented and ready for Frontend consumption.
+
+### Milestone: Production Endpoint Establishment
+
+- **Primary URL:** https://barbershop-near-me.onrender.com.
+- **Network Transition:** Officially decommissioned `localhost:3000` for production testing; all external requests now route through Render's load balancer.
+- **Connectivity:** Confirmed that the Live URL is the single point of truth for both Postman testing and future Frontend integration.
+
+### Milestone: Production Environment Verification
+
+- **Deployment Status:** SUCCESS. The primary URL resolves to the designated root health-check message.
+- **Service Reachability:** Confirmed that the Node.js runtime is active and responding to GET requests on the public internet.
+- **Endpoint Routing:** Verified that the Express router is correctly directing traffic to the production controllers.
+- **Database Status:** 'Database connection verified' confirmed in Render logs, indicating successful handshake between the Web Service and PostgreSQL.
